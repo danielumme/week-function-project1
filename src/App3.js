@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useCallback, useMemo} from "react";
 import axios from 'axios';
-// new
 
 //Container
 function App3() {
@@ -16,16 +15,16 @@ function App3() {
     }, []) // mount할때마다 실행 => componentDidMount, componentDidUpdate
 
     // 이벤트 등록
-    const handleUserInput=(ss)=>{
+    const handleUserInput=useCallback((ss)=>{
         setSs(ss);
-    }
+    },[ss]) //ss: 입력한 단어 => ss가 변경될때만 호출
+    
     return(
    <div className={"row"}>
-    <H/>
+    <H2/>
     <SearchBar ss={ss} onUserInput={handleUserInput}/>
     <div style={{"height":"50px"}}></div>
     <MusicTable music={music} ss={ss}/>
-
    </div>
 
     )
@@ -38,6 +37,8 @@ function App3() {
     var n = s.indexOfd(k); => -1
     n = 0;
 
+    CallBack : 함수의 주소를 기억함
+    Memo : 함수의 리턴문을 기억함
  */
 
 function MusicTable(props) {
@@ -78,7 +79,6 @@ function MusicRow(props) {
 
         </tr>
     )
-
 }
 
 function SearchBar(props) {
@@ -100,17 +100,28 @@ function SearchBar(props) {
     )
 }
 
-// memo
+// memo 안 씀
 const H=()=>{
     //momo
+    const color = ["red", "blue", "green", "yellow", "pink"];
+    const no = parseInt(Math.random()*5);
+    // Math.random() => 0.0 ~ 0.99 => 5*0.0 ~ 0.99*5 ==> 4.999
+    // 0 ~ 4
     return(
-        <h1 className={"text-center"}>Music Top 50</h1>
+        <h1 className={"text-center"} style={{"color":color[no]}}>Music Top 50</h1>
     )
 }
 
-// memo 안 씀
-const H2=()=>{
+// memo 씀
+const H2=React.memo(()=>{
+    const color = ["red", "blue", "green", "yellow", "pink"];
+    const no = parseInt(Math.random()*5);
+    // Math.random() => 0.0 ~ 0.99 => 5*0.0 ~ 0.99*5 ==> 4.999
+    // 0 ~ 4
+    return(
+        <h1 className={"text-center"} style={{"color":color[no]}}>Music Top 50</h1>
+    )
 
-}
+});
 
 export default App3;
