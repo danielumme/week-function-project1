@@ -39,6 +39,17 @@ export default function App4() {
         </table>
 
     )
+
+    const movie_pop = pop.map((m)=>
+        <tr>
+            <td><img src={m.poster.substring(0,m.poster.indexOf(")"))} width={"30"} height={"30"}/> </td>
+            <td>{m.title}</td>
+
+        </tr>
+
+
+    )
+
     return(
         <div className={"row"}>
             <div className={"col-sm-8"}>
@@ -52,6 +63,12 @@ export default function App4() {
             </div>
 
             <div className={"col-sm-4"}>
+                <table className={"table"}>
+                    <tbody>
+                    {movie_pop}
+                    </tbody>
+
+                </table>
 
             </div>
 
