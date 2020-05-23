@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App3 from './App3';
+import App4 from './App4';
 import * as serviceWorker from './serviceWorker';
 
 const msg = "React\nRedux\nMongoDB\nNodeJS\nMobx"
@@ -10,7 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
 {/*    <App name={"홍길동"} sex={"남자"} age={"30"}/>*/}
 {/*    <App msg = {msg}/>*/}
-    <App3/>
+    <App4/>
   </React.StrictMode>,
   document.getElementById('root')
 );
